@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_hoge.test_make_record</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>test_make_record</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var test_make_record = Class.create();
+test_make_record.prototype = {
+    initialize: function() {
+    },
+	update:function(data) {
+		gs.info('update product price called!');
+		gs.info('data = ' + data);
+		var product = data.product;
+		var unitprice = data.unitprice;
+		
+		gs.info('prodcut = ' + product);
+		gs.info('price = ' + unitprice);
+		
+		var grSales = new GlideRecord('x_211750_angular_a_sales');
+
+		grSales.addQuery('product',product);
+		grSales.query();
+		
+		if(grSales.next()){
+		  grSales.unitprice = unitprice;
+		  grSales.update(); 
+		}
+	},
+
+    type: 'test_make_record'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-05 07:51:51</sys_created_on>
+        <sys_id>023b10f7c369121068f5961d050131ff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>test_make_record</sys_name>
+        <sys_package display_value="hoge" source="x_snc_hoge">b2ceeb6fc321121068f5961d050131b4</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="hoge">b2ceeb6fc321121068f5961d050131b4</sys_scope>
+        <sys_update_name>sys_script_include_023b10f7c369121068f5961d050131ff</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-05 07:51:51</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>023b10f7c369121068f5961d050131ff</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-05 07:51:50</sys_created_on>
+        <sys_id>29db143fc369121068f5961d05013198</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-05 07:51:50</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
